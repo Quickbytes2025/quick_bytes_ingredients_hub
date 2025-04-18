@@ -14,4 +14,4 @@ def get_recipe(recipe_id):
     return Recipe.query.get(recipe_id)
 
 def get_all_recipes():
-    return Recipe.query.all()
+    return Recipe.query.order_by(Recipe.recipe_id).all()
