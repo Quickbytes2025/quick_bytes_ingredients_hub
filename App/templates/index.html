@@ -10,4 +10,28 @@
         <p> Welcome {{current_user.username}} </p>
     {% endif %}
     <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
+    
+    <div class="input-field col s12" >
+        <select class="icons" name="reccipe_id" onchange="window.location.href = `/${this.value}`">
+          <option value=""  disabled >Choose your option</option>
+          {% for recipe in recipe list %}
+          <option value ="{{ recipe.reccipe_id }}" {% if selected_recipe.id == recipe.recipe_id %} selected{% endif %} data-icon="{{recipe.recipe_thumbnail}}" >{{recipe.recipe_name}}</option>
+          {% endfor %}
+        </select>
+        <label>Select Recipe</label>
+      </div>
+
+      <div class="col s12">
+          <!-- Student Details -->
+                <img src="{{ selected_recipe.recipe_thumbnail }}" 
+                alt="{{ selected_recipe.recipe_name }}"
+                style="width: 100%; height: 100%; margin: 0 auto;">
+
+            <div class="card-content">
+                <p><strong>{{selected_recipe.recipe_name}}<strong></p>
+                <p><strong>{{selected_recipe.recipe_instructions}}<strong></p>
+            </div>
+      </div>
+
+
 {% endblock %}
