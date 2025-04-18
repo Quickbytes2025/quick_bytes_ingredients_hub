@@ -1,6 +1,7 @@
 from App.database import db
 
 class Recipe(db.Model):
+    __tablename__ = 'recipe'
     recipe_id= db.Column(db.String(5), primary_key=True)
     recipe_name= db.Column(db.String(120), nullable=False)
     recipe_instructions = db.Column(db.String(2500), nullable=False)
