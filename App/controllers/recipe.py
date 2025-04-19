@@ -16,9 +16,6 @@ def get_recipe_by_name(recipe_name):
         return None 
     
 def get_recipe(recipe_id):
-    if recipe_id is None:
-        return None
-    else:
         return Recipe.query.get(recipe_id)
     
 def list_all_recipes():
@@ -42,9 +39,6 @@ def create_r_ingredient(recipe_id, ingredient_name):
     return True
 
 
-def recepies_in_category(name):
-    recipe_categories = Recipe.query.filter_by(category_name=name).all()
-    if recipe_categories:
-        return recipe_categories
-    else:
-        return None
+def recipes_in_category(category_name):
+    return Recipe.query.filter_by(category=category_name).all()
+    

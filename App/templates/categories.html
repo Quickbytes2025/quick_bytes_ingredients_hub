@@ -1,5 +1,6 @@
-{% extends "recipes-template.html" %}
+{% extends "layout.html" %}
 {% block title %}Categories{% endblock %}
+{% block page %}Categories{% endblock %}
 
 {{ super() }}
 
@@ -9,12 +10,9 @@
     <div class="category-content" id="content">
         {% for category in categories %}
             <div class="card">
-                <img src="{{category.image}}" alt="{{category.name}}" style="width:100%">
-                <h1>{{category.name}}</h1>
-                <p class="title">Summary</p>
-                <p class="details">{{category.description}}</p>
-                <a href="/render-details/{{category.name}}"><button id="show-details" > Show More</button></a>
-                <a href="/render-recipes/{{category.name}}"><p><button>Show {{category.name}} Recipes</button></p></a>
+                <img src="{{category.category_thumbnail}}" alt="{{category.category_name}}" style="width: 10%; height: 10%; margin: 0 auto;">
+                <h1>{{category.category_name}}</h1>
+                <a href="/recipes/{{category.category_name}}"><p><button>Show {{category.category_name}} Recipes</button></p></a>
             </div>
         {% endfor %}
     </div>

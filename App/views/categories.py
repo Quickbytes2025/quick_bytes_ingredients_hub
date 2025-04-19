@@ -6,7 +6,6 @@ from.index import index_views
 from App.controllers import (
     list_all_categories,
     get_category,
-    recepies_in_category,
     jwt_required
 )
 
