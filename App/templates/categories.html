@@ -1,0 +1,21 @@
+{% extends "recipes-template.html" %}
+{% block title %}Categories{% endblock %}
+
+{{ super() }}
+
+{% block head %}Lets see...Categories{% endblock %}
+
+{% block content %}
+    <div class="category-content" id="content">
+        {% for category in categories %}
+            <div class="card">
+                <img src="{{category.image}}" alt="{{category.name}}" style="width:100%">
+                <h1>{{category.name}}</h1>
+                <p class="title">Summary</p>
+                <p class="details">{{category.description}}</p>
+                <a href="/render-details/{{category.name}}"><button id="show-details" > Show More</button></a>
+                <a href="/render-recipes/{{category.name}}"><p><button>Show {{category.name}} Recipes</button></p></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

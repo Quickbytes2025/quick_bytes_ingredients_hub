@@ -1,0 +1,38 @@
+{% extends "recipes-template.html" %}
+{% block title %}{{category_name}} Recipes{% endblock %}
+
+{{ super() }}
+
+
+{% block head %}
+    {% if category_name %}
+        Lets see... {{category_name}} Recipes
+    {% else %}
+        Lets see... All Recipes
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="category-content" id="content">
+        {% for recipe in recipes %}
+            <div class="card">
+                <img src="{{recipe.image}}" alt="John" style="width:100%">
+                <h1>{{recipe.name}}</h1>
+                <p class="title">Details:</p>
+                <p class="details">{{recipe.description}}</p>
+                <div class="small-icons" id="icons">
+                  <a href="{{recipe.yt}}"><i class="fa fa-youtube-play" style="font-size:24px"></i></a>
+                  
+                  <!-- <span id="${state[i].strMeal}">
+                    <a onclick="favorite('${state[i].strMeal}')" ><ion-icon  name="star-outline"></ion-icon></a>
+                  </span>   -->
+                
+                </div>
+                <a href="/render-details/{{recipe.name}}">
+                    <p><button>Show Recipe</button></p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

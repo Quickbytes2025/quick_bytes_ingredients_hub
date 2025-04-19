@@ -1,7 +1,9 @@
 from App.database import db
 
 class Category (db.Model):
-    category_id= db.Column(db.String(5), nullable= False, primary_key=True)
+    __tablename__ = 'category'
+    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    category_id= db.Column(db.String(5), nullable= False)
     category_name=  db.Column(db.String(80), nullable=False)
     category_thumbnail= db.Column(db.String(200), nullable=False) 
 

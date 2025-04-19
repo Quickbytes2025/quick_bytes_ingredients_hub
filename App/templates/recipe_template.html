@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+<body>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <br>
+    <a href="/">Home</a>
+    {% if is_authenticated %}
+    <br>
+    <a href="/categories">Categories</a>
+    {% endif %}
+    <br>
+    <a href="/render-all-recipes" id="showAll">All Recipes</a>
+    <br>
+    {% if not is_authenticated %}
+    <a href="/login-page" >Login</a>
+    <br>
+    <a href="/signup-page" >Signup</a>
+    <br>
+    {% endif %}
+    {% if current_user != none %}
+    <p id="user">
+      Welcome {{current_user.username.capitalize()}}
+    </p>
+    {% endif %}
+    <br>
+    <a href="/" id="a1">
+      <img src="../static/logo.png" alt="Your Logo">
+    </a>
+    
+  </div>
+  
+  <div class="category-main" id="main">
+    <button class="openbtn" id="button" onclick="openNav()">☰ MENU</ion-icon></button>  
+  
+    <div class="category-head" id="head">
+      
+        <h1 class="head-text" id="head-text">{% block head %}Lets see...LOADING...{% endblock %}</h1>
+      
+      <div class="example" id="search-bar">
+        <input type="text" placeholder="Search Categories.." id="searchKey">
+        <button onclick=searchCategories() ><i class="fa fa-search"></i></button>
+      </div>
+      
+    </div>
+    {% block detail %}
+    
+    {% endblock %}
+    {% block content %}
+    
+    {% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+
+      M.AutoInit();
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              {% for message in messages %}
+              M.toast({html: '{{message}}'})
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+  </script>
+</body>
+</html> 
