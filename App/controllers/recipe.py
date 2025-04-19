@@ -16,11 +16,10 @@ def get_recipe_by_name(recipe_name):
         return None 
     
 def get_recipe(recipe_id):
-    selected_recipe= Recipe.query.get(recipe_id)
-    if selected_recipe:
-        return selected_recipe
+    if recipe_id is None:
+        return None
     else:
-        return None 
+        return Recipe.query.get(recipe_id)
     
 def list_all_recipes():
     recipe_list= Recipe.query.order_by(Recipe.recipe_id).all()
