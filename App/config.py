@@ -15,5 +15,6 @@ def load_config(app, overrides):
     app.config["JWT_COOKIE_SECURE"] = True
     app.config["JWT_COOKIE_CSRF_PROTECT"] = False
     app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
+    app.config['CORS_HEADERS'] = 'Content-Type'
     for key in overrides:
         app.config[key] = overrides[key]
