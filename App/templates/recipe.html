@@ -30,6 +30,24 @@
         {% if search_recipe %}
                     <h3>{{ search_recipe.recipe_name }}</h3>
                     <img src="{{ search_recipe.recipe_thumbnail }}" alt="{{ search_recipe.recipe_name }}" style="width: 200px;">
+                    <div class="recipe-ingredients">
+                        <h4>Missing Ingredients:</h4>
+                        <ul>
+                            {% for ingredient in search_recipe.ingredients %}
+                                <li>{{ ingredient.ingredient_name }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        {% if missing_ingredients %}
+                            <h4>Missing Ingredients:</h4>
+                            <ul class="missing-ingredients">
+                                {% for ingredient in missing_ingredients %}
+                                    <li>{{ ingredient.ingredient_name }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
                     <p>{{ search_recipe.recipe_instructions }}</p>
 
         {% endif %}        

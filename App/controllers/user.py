@@ -1,4 +1,4 @@
-from App.models import User
+from App.models import User,Ingredients
 from App.database import db
 
 def create_user(username, password):
@@ -31,3 +31,28 @@ def update_user(id, username):
         return db.session.commit()
     return None
     
+def add_ingredient_to_user(user_id, ingredient_name):
+    user = get_user(user_id)
+    ingredient = Ingredients.query.get(ingredient_name)
+    if user and ingredient:
+        if ingredient not in user.ingredients:
+            user.ingredients.append(ingredient)
+            db.session.commit()
+            return True
+    return False
+
+def remove_ingredient_from_user(user_id, ingredient_name):
+    user = get_user(user_id)
+    ingredient = Ingredients.query.get(ingredient_name)
+    if user and ingredient:
+        if ingredient in user.ingredients:
+            user.ingredients.remove(ingredient)
+            db.session.commit()
+            return True
+    return False
+
+def get_user_ingredients(user_id):
+    user = get_user(user_id)
+    if user:
+        return [ingredient.get_json() for ingredient in user.ingredients]
+    return []
