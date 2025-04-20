@@ -26,9 +26,7 @@ def get_ingredient(ingredient_id):
     
 
 def get_all_ingredients():
-    ingredient_list=Ingredients.query.all()
-    if ingredient_list:
-        return ingredient_list
-    else:
-        return None 
+    return Ingredients.query.all()
+   
+    
     
