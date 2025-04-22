@@ -5,29 +5,31 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
      <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
     <title>{% block title %}{% endblock %}</title>
 
   </head>
   <body>
-    
-      <nav class="purple">
+      <!-- Logo above the navbar -->
+    <div style="text-align: center; margin-top: 10px;">
+      <a href="/">
+          <img src="{{ url_for('static', filename='quick_byte_logo.jpg') }}" alt="Quick Byte Logo" style="height: 200px; border-radius: 50%;">
+      </a>
+  </div>
+      <nav > 
+        
           <div class="nav-wrapper">
-              <a href="#!" class="brand-logo center">{% block page %}{% endblock %}</a>
-              <ul id="nav-mobile" class="left">
+              <ul id="nav-mobile" class="center-align">
                   <li><a href="/">Home</a></li>
                   <li><a href="/categories">Categories</a></li>
                   <li><a href="/user/{{current_user.id}}/ingredients">My Ingredients</a></li>
                   <li><a href="/user/{{current_user.id}}/recipes">My Recipes</a></li>
-                  <li><a href="/users">Users Jinja</a></li>
-                  {% if is_authenticated %}
-                    <li><a href="/identify">Identify</a></li>
-                  {% endif %}
-                  <li><a href="/static/users">Users JS</a></li>
-                  </ul>
+              
               {% if is_authenticated %}
               <ul id="nav-mobile" class="right">
                 <li><a href="/logout">Logout</a></li>
