@@ -30,10 +30,10 @@
                             <div class="card-content">
                                 <h3>{{ recipe.recipe_name }}</h3>
                                 <a href="/recipe/{{ recipe.recipe_id }}">
-                                    <button type="button" class="show-recipe-btn">Show Recipe</button>
+                                    <button class="remove-btn" type="button" >Show Recipe</button>
                                 </a>
                                 <form action="/user/{{ user_id }}/recipes/remove/{{ recipe.recipe_id }}" method="POST">
-                                    <button type="submit" class="remove-btn">Remove</button>
+                                    <button class="remove-btn" type="submit">Remove</button>
                                 </form>
                             </div>
                         </div>

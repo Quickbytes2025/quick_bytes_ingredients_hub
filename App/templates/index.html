@@ -1,44 +1,45 @@
 {% extends "layout.html" %}
-{% block title %}Flask MVC App{% endblock %}
-{% block page %}Flask MVC App{% endblock %}
-
-{{ super() }}
+{% block title %}Quickbyte - Home{% endblock %}
+{% block page %}Quickbyte - Home{% endblock %}
 
 {% block content %}
-    <h1>Flask MVC</h1>
-    {% if is_authenticated %}
-        <p> Welcome {{current_user.username}} </p>
-        <a href="{{ url_for('auth_views.logout_action') }}" class="btn">Logout</a>
-    {% else %}
-        <p>You are not logged in.</p>
-        <a href="{{ url_for('auth_views.login_page') }}" class="btn">Login</a>
-    {% endif %}
-
-    <p>This is a boileplate flask application which follows the MVC pattern for structuring the project.</p>
-    
-    <div class="input-field col s12" >
-        <select class="icons" name="recipe_id" onchange="window.location.href = `/${this.value}`">
-          <option value=""  disabled >Choose your option</option>
-          {% for recipe in recipe_list %}
-          <option value="{{ recipe.recipe_id }}" 
-                    {% if selected_recipe and selected_recipe.recipe_id == recipe.recipe_id %} selected{% endif %}
-                    data-icon="{{ recipe.recipe_thumbnail }}">
-                {{ recipe.recipe_name }}
-            </option>
-          {% endfor %}
-        </select>
-        <label>Select Recipe</label>
+    <!-- Welcome Card -->
+    <div class="welcome-card card">
+        <div class="card-content">
+            <h2>Welcome to Quick Bytes!</h2>
+        </div>
+        {% if is_authenticated %}
+            <h3>Welcome, {{ current_user.username }}!</h3>
+            <a href="{{ url_for('auth_views.logout_action') }}" class="remove-btn">Logout</a>
+        {% else %}
+            <p>You are not logged in.</p>
+            <a href="{{ url_for('auth_views.login_page') }}" class="remove-btn">Login</a>
+        {% endif %}
     </div>
 
-    {% if selected_recipe %}
-    <div class="col s12">
-        <img src="{{ selected_recipe.recipe_thumbnail }}" 
-             alt="{{ selected_recipe.recipe_name }}"
-             style="width: 100%; height: 100%; margin: 0 auto;">
-        <div class="card-content">
-            <p><strong>{{ selected_recipe.recipe_name }}</strong></p>
-            <p><strong>{{ selected_recipe.recipe_instructions }}</strong></p>
+    <!-- Navigation Cards -->
+    <div class="navigation-grid">
+        <div class="card">
+            <div class="card-content">
+                <h3>Categories</h3>
+                <p>Explore recipes by category.</p>
+                
+            </div>
+            <a href="/categories" class="remove-btn">Go to Categories</a>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3>Your Recipes</h3>
+                <p>View and manage your saved recipes.</p>
+            </div>
+            <a href="/user/{{ current_user.id }}/recipes" class="remove-btn">Go to Recipes</a>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3>Your Ingredients</h3>
+                <p>Manage your ingredient collection.</p>
+            </div>
+            <a href="/user/{{ current_user.id }}/ingredients" class="remove-btn">Go to Ingredients</a>
         </div>
     </div>
-    {% endif %}
 {% endblock %}
