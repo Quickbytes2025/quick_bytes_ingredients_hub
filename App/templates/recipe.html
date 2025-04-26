@@ -25,8 +25,8 @@
             </div>
             <div class="card-content">
                 <span class="card-title">{{ recipe.recipe_name }}</span>
-                <a class="waves-effect waves-light btn" href="/recipe/{{ recipe.recipe_id }}">
-                    Show Recipe
+                <a href="/recipe/{{ recipe.recipe_id }}">
+                  <button>  Show Recipe</button>
                 </a>
             </div>
         </div>
@@ -36,7 +36,7 @@
     
 {% if search_recipe %}
 <div class="recipe-details">
-    <h3>{{ search_recipe.recipe_name }}</h3>
+    <h2>{{ search_recipe.recipe_name }}</h2>
     <img src="{{ search_recipe.recipe_thumbnail }}" alt="{{ search_recipe.recipe_name }}" style="width: 200px;">
     <div class="recipe-ingredients">
         <h4>Ingredients:</h4>
