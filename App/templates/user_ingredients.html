@@ -2,36 +2,40 @@
 {% block title %}User Ingredients{% endblock %}
 
 {% block content %}
-    <h1>Ingredients for User {{ user_id }}</h1>
-
-    <!-- Display User's Ingredients -->
-    <h2>Your Ingredients</h2>
-    {% if my_ingredients %}
-        <ul>
-            {% for ingredient in my_ingredients %}
-                <li>
-                    {{ ingredient.ingredient_name }}
-                    <form action="/user/{{ user_id }}/ingredients/remove/{{ ingredient.ingredient_id }}" method="POST" style="display: inline;">
-                        <button type="submit">Remove</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have no ingredients in your collection.</p>
-    {% endif %}
-
-    <!-- Dropdown Search Bar to Add Ingredients -->
-    <h2>Add Ingredients</h2>
-    <form action="/user/{{ user_id }}/ingredients/add" method="POST">
-        <div>
-            <label for="ingredient_id">Select Ingredient:</label>
-            <select id="ingredient_id" name="ingredient_id">
-                {% for ingredient in all_ingredients %}
-                    <option value="{{ ingredient.ingredient_id }}">{{ ingredient.ingredient_name }}</option>
-                {% endfor %}
-            </select>
+    <div class="ingredients-container">
+        <!-- Dropdown Search Bar to Add Ingredients -->
+        <div class="dropdown-search">
+            <h2>Add Ingredients</h2>
+            <form action="/user/{{ user_id }}/ingredients/add" method="POST">
+                <label for="ingredient_id">Select Ingredient:</label>
+                <select id="ingredient_id" name="ingredient_id" size ="5" required>
+                    {% for ingredient in all_ingredients %}
+                        <option value="{{ ingredient.ingredient_id }}">{{ ingredient.ingredient_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Add Ingredient</button>
+            </form>
         </div>
-        <button type="submit">Add Ingredient</button>
-    </form>
+
+        <!-- User's Ingredients Collection -->
+        <div class="ingredients-grid">
+            <h2>Your Ingredients</h2>
+            {% if my_ingredients %}
+                <div class="grid">
+                    {% for ingredient in my_ingredients %}
+                        <div class="card">
+                            <div class="card-content">
+                                <h3>{{ ingredient.ingredient_name }}</h3>
+                                <form action="/user/{{ user_id }}/ingredients/remove/{{ ingredient.ingredient_id }}" method="POST">
+                                    <button type="submit" class="remove-btn">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h3>You have no ingredients in your collection.</h3>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,3 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+
 html {
     padding: 0;
+}
+
+body {
+    color: #ca2521;
+    background-color: black;
+}
+
+p{
+    font-family: "Roboto", sans-serif;
+    color: #fff5e3;
+    text-align: center; /* Centers the paragraph */
+    margin-top: 20px; /* Adds space above the paragraph */
+}
+
+h2{
+    font-family: "Aclonica", sans-serif;
+    color: #ca2521;
+    text-align: center; /* Centers the heading */
+    margin-top: 20px; /* Adds space above the heading */
+}
+nav {
+    background-color:black !important;
+    border: 2px solid #ca2521;
+}
+nav ul {
+    font-family: "Aclonica", sans-serif;
+    display: flex;
+    justify-content: center; /* Centers the navigation items */
+    align-items: center; /* Vertically aligns the items */
+}
+
+nav ul li a {
+   color: #ca2521 !important;
+}   
+
+nav ul li a:hover {
+    background-color: #ca2521;
+    color: #fff5e3 !important;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+}
+
+.card {
+    text-align: center;
+    border: 2px solid #ca2521;
+    border-radius: 8px  !important;
+    padding: 15px;
+    background-color: black !important;
+    color: #ca2521;
+}
+
+.card-content h3{
+    color: #fff5e3;
+}
+
+.card-content .card-title{
+    font-family: "Aclonica", sans-serif;
+    color: #fff5e3;
+}
+
+.card-title {
+    font-family: "Aclonica", sans-serif;
+    }
+
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card button {
+    background-color: black !important;
+    color: #fff5e3 !important;
+    border: 2px solid #ca2521 !important;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #ca2521 !important;
+    color: black !important;
+}
+
+.recipe-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    text-align: center; /* Centers text */
+    margin: 20px auto;
+    max-width: 1200px; /* Restricts the width of the instructions */
+    padding: 20px;
+    border: 2px solid #ca2521;
+    border-radius: 8px;
+    background-color: black;
+    color: #ca2521;
+    font-size: 2.0em; /* Adjusts the font size for better readability */
+}
+
+.recipe-details img {
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.recipe-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recipe-details ul li {
+    margin: 5px 0;
+}
+
+.recipe-details h3, .recipe-details h4 {
+    color: #ca2521;
+}
+
+.recipe-ingredients ul {
+    display: flex; /* Makes the list horizontal */
+    flex-wrap: wrap; /* Allows wrapping if the list is too long */
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+    margin: 0; /* Removes default margin */
+    gap: 10px; /* Adds spacing between items */
+}
+
+.recipe-ingredients ul li {
+    background-color: #ca2521; /* Optional: Add a background color for each item */
+    color: black; /* Optional: Text color */
+    padding: 5px 10px; /* Optional: Add padding for better spacing */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+.ingredients-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.dropdown-search {
+    flex: 1; /* Takes up space on the left */
+    max-width: 500px;
+    background-color: black;
+    color: #ca2521 !important;
+    padding: 10px;
+    border: 2px solid #ca2521;
+    border-radius: 8px;
+}
+
+.option {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ca2521;
+    border-radius: 5px;
+    background-color: white;
+    color: #fff5e3;
+}
+
+.dropdown-search button {
+    background-color: black;
+    color: #fff5e3;
+    border: 1px solid #ca2521;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-search button:hover {
+    background-color: #ca2521;
+    color: black;
+    border: 1px solid #ca2521;
+}
+
+.ingredients-grid {
+    flex: 3; /* Takes up the remaining space */
+}
+
+.ingredients-grid .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+}
+
+.ingredients-grid h3, .recipes-grid h3 {
+    font-family: "Aclonica", sans-serif;
+    margin-bottom: 10px;
+    color: #fff5e3;  
+}
+
+
+.remove-btn {
+    background-color: #ca2521;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: black;
+    color: #ca2521;
+    border: 1px solid #ca2521;
+}
+
+a button {
+    background-color:  black;
+    color: #ca2521;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a button:hover {
+    background-color: black;
+    color: #ca2521;
+    border: 1px solid #ca2521;
+}
+
+.add-recipe-btn {
+    background-color: #ca2521;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-recipe-btn:hover {
+    background-color: black;
+    color: #ca2521;
+    border: 1px solid #ca2521;
+}
+
+.recipes-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+.dropdown-search h2 {
+    font-family: "Aclonica", sans-serif;
+    margin-bottom: 15px;
+}
+
+.recipes-grid {
+    flex: 3; /* Takes up the remaining space */
+}
+
+.recipes-grid .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+}
+
+.card {
+    background-color: black;
+    color: #ca2521;
+    border: 2px solid #ca2521;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.card h3 {
+    font-family: "Aclonica", sans-serif;
+    margin-bottom: 10px;
+}
+.card h2 {
+    font-family: "Aclonica", sans-serif;
+    margin-bottom: 10px;
+}
+
+.show-recipe-btn, .remove-btn {
+    background-color: #ca2521;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.show-recipe-btn:hover, .remove-btn:hover {
+    background-color: black;
+    color: #ca2521;
+    border: 1px solid #ca2521;
+}
+
+.navigation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 20px; /* Space between cards */
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: black;
+    color: #ca2521;
+    border: 2px solid #ca2521;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+    font-family: "Aclonica", sans-serif;
+}
+
+.input-field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ca2521;
+    border-radius: 5px;
+    background-color: black;
+    color: #ca2521;
+}
+
+.input-field input::placeholder {
+    color: #ca2521;
+}
+
+.btn {
+    background-color: #ca2521;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: black;
+    color: #ca2521;
+    border: 1px solid #ca2521;
+}
+
+.flash-messages {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    color: #ca2521;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
 }

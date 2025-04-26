@@ -1,55 +1,50 @@
 {% extends "layout.html" %}
 {% block title %}{{category_name}} Recipes{% endblock %}
 
-{{ super() }}
-
-
-{% block head %}
-    {% if category_name %}
-        Lets see... {{category_name}} Recipes
-    {% else %}
-        Lets see... All Recipes
-    {% endif %}
-{% endblock %}
-
 
 {% block content %}
-    <div class="category-content" id="content">
-    {% if recipe_list %}
-        <ul>
-        {% for recipe in recipe_list %}
-            <li>
-                <h3>{{ recipe.recipe_name }}</h3>
-                <img src="{{ recipe.recipe_thumbnail }}" alt="{{ recipe.recipe_name }}" style="width: 200px;">
-                <a href="/recipe/{{recipe.recipe_id}}"><p><button>Show Recipe</button></p></a>
-            </li>
-        {% endfor %}
-        </ul>     
-    {% endif %}        
+   
+{% if recipe_list %}
+<h2>Recipes in {{ category_name }}</h2>
+<div class="category-grid">
+    {% for recipe in recipe_list %}
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img src="{{ recipe.recipe_thumbnail }}" alt="{{ recipe.recipe_name }}">
+            </div>
+            <div class="card-content">
+                <span class="card-title">{{ recipe.recipe_name }}</span>
+                <a href="/recipe/{{ recipe.recipe_id }}">
+                  <button>  Show Recipe</button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
     
-        {% if search_recipe %}
-                    <h3>{{ search_recipe.recipe_name }}</h3>
-                    <img src="{{ search_recipe.recipe_thumbnail }}" alt="{{ search_recipe.recipe_name }}" style="width: 200px;">
-                    <div class="recipe-ingredients">
-                        <h4>Missing Ingredients:</h4>
-                        <ul>
-                            {% for ingredient in search_recipe.ingredients %}
-                                <li>{{ ingredient.ingredient_name }}</li>
-                            {% endfor %}
-                        </ul>
+{% if search_recipe %}
+<div class="recipe-details">
+    <h2>{{ search_recipe.recipe_name }}</h2>
+    <img src="{{ search_recipe.recipe_thumbnail }}" alt="{{ search_recipe.recipe_name }}" style="width: 200px;">
+    <div class="recipe-ingredients">
+        <h4>Ingredients:</h4>
+        <ul>
+            {% for ingredient in search_recipe.ingredients %}
+                <li>{{ ingredient.ingredient_name }}</li>
+            {% endfor %}
+        </ul>
 
-                        {% if missing_ingredients %}
-                            <h4>Missing Ingredients:</h4>
-                            <ul class="missing-ingredients">
-                                {% for ingredient in missing_ingredients %}
-                                    <li>{{ ingredient.ingredient_name }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-
-                    <p>{{ search_recipe.recipe_instructions }}</p>
-
-        {% endif %}        
+        {% if missing_ingredients %}
+            <h4>Missing Ingredients:</h4>
+            <ul class="missing-ingredients">
+                {% for ingredient in missing_ingredients %}
+                    <li>{{ ingredient.ingredient_name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
+    <p>{{ search_recipe.recipe_instructions }}</p>
+</div>
+{% endif %}
 {% endblock %}

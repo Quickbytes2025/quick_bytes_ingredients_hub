@@ -1,40 +1,47 @@
-
 {% extends "layout.html" %}
 {% block title %}User Recipes{% endblock %}
 
 {% block content %}
-    <h1>Recipes for User {{ user_id }}</h1>
-
-    <!-- Display User's Recipes -->
-    <h2>Your Recipes</h2>
-    {% if my_recipes %}
-        <ul>
-            {% for recipe in my_recipes %}
-                <li>
-                    <img src="{{ recipe.recipe_thumbnail }}" alt="{{ recipe.recipe_name }}" style="width: 50px; height: 50px;">
-                    {{ recipe.recipe_name }}
-                    <a href="/recipe/{{recipe.recipe_id}}"><p><button>Show Recipe</button></p></a>
-                    <form action="/user/{{ user_id }}/recipes/remove/{{ recipe.recipe_id }}" method="POST" style="display: inline;">
-                        <button type="submit">Remove</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have no recipes in your collection.</p>
-    {% endif %}
-
-    <!-- Dropdown Search Bar to Add Recipes -->
-    <h2>Add Recipes</h2>
-    <form action="/user/{{ user_id }}/recipes/add" method="POST">
-        <div>
-            <label for="recipe_id">Select Recipe:</label>
-            <select id="recipe_id" name="recipe_id">
-                {% for recipe in all_recipes %}
-                    <option value="{{ recipe.recipe_id }}"  data-icon="{{ recipe.recipe_thumbnail }}">{{ recipe.recipe_name }}</option>
-                {% endfor %}
-            </select>
+    <div class="recipes-container">
+        <!-- Dropdown Search Bar to Add Recipes -->
+        <div class="dropdown-search">
+            <h2>Add Recipes</h2>
+            <form action="/user/{{ user_id }}/recipes/add" method="POST">
+                <label for="recipe_id">Select Recipe:</label>
+                <select id="recipe_id" name="recipe_id" size="5" required>
+                    {% for recipe in all_recipes %}
+                        <option value="{{ recipe.recipe_id }}">{{ recipe.recipe_name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Add Recipe</button>
+            </form>
         </div>
-        <button type="submit">Add Recipe</button>
-    </form>
+
+        <!-- User's Recipes Collection -->
+        <div class="recipes-grid">
+            <h2>Your Recipes</h2>
+            {% if my_recipes %}
+                <div class="grid">
+                    {% for recipe in my_recipes %}
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="{{ recipe.recipe_thumbnail }}" alt="{{ recipe.recipe_name }}">
+                            </div>
+                            <div class="card-content">
+                                <h3>{{ recipe.recipe_name }}</h3>
+                                <a href="/recipe/{{ recipe.recipe_id }}">
+                                    <button type="button" class="show-recipe-btn">Show Recipe</button>
+                                </a>
+                                <form action="/user/{{ user_id }}/recipes/remove/{{ recipe.recipe_id }}" method="POST">
+                                    <button type="submit" class="remove-btn">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h3>You have no recipes in your collection.</h3>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
