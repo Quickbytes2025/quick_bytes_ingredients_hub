@@ -5,10 +5,14 @@
 {{ super() }}
 
 {% block content %}
+
+        <h2>Users Page</h2>
+        
     <div class="row">
         <p>
             This is table is renderd on the Server. Flask gets the data from the database and uses jinja templates to dyanmically render this page when a request is sent to <a href="/users">/users</a>.
         </p>
+       
     </div>
 
     <div class="row">
@@ -50,6 +54,7 @@
           {% endfor %}
         <tbody>
       </table>
+      <a href="/login" class="remove-btn">Go To Login</a>
     </div>
 
 {% endblock %}

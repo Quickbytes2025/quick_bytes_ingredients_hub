@@ -33,7 +33,7 @@ def update_user(id, username):
     
 def add_ingredient_to_user(user_id, ingredient_name):
     user = get_user(user_id)
-    ingredient = Ingredients.query.get(ingredient_name)
+    ingredient = Ingredients.query.filter_by(ingredient_name=ingredient_name).first()
     if user and ingredient:
         if ingredient not in user.ingredients:
             user.ingredients.append(ingredient)
@@ -43,7 +43,7 @@ def add_ingredient_to_user(user_id, ingredient_name):
 
 def remove_ingredient_from_user(user_id, ingredient_name):
     user = get_user(user_id)
-    ingredient = Ingredients.query.get(ingredient_name)
+    ingredient = Ingredients.query.filter_by(ingredient_name=ingredient_name).first()
     if user and ingredient:
         if ingredient in user.ingredients:
             user.ingredients.remove(ingredient)

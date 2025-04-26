@@ -1,17 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}{{category_name}} Recipes{% endblock %}
 
-{{ super() }}
-
-
-{% block head %}
-    {% if category_name %}
-        Lets see... {{category_name}} Recipes
-    {% else %}
-        Lets see... All Recipes
-    {% endif %}
-{% endblock %}
-
 
 {% block content %}
    

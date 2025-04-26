@@ -149,14 +149,23 @@ nav ul li a:hover {
     padding: 20px;
 }
 
+.dropdown-search {
+    flex: 1; /* Takes up space on the left */
+    max-width: 500px;
+    background-color: black;
+    color: #ca2521 !important;
+    padding: 10px;
+    border: 2px solid #ca2521;
+    border-radius: 8px;
+}
 
-.dropdown-search select {
+.option {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ca2521;
     border-radius: 5px;
-    background-color: black;
+    background-color: white;
     color: #fff5e3;
 }
 
@@ -183,6 +192,12 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 20px;
+}
+
+.ingredients-grid h3, .recipes-grid h3 {
+    font-family: "Aclonica", sans-serif;
+    margin-bottom: 10px;
+    color: #fff5e3;  
 }
 
 
@@ -239,15 +254,7 @@ a button:hover {
     padding: 20px;
 }
 
-.dropdown-search {
-    flex: 1; /* Takes up space on the left */
-    max-width: 500px;
-    background-color: black;
-    color: #ca2521;
-    padding: 10px;
-    border: 2px solid #ca2521;
-    border-radius: 8px;
-}
+
 
 .dropdown-search h2 {
     font-family: "Aclonica", sans-serif;
@@ -304,4 +311,70 @@ a button:hover {
     gap: 20px; /* Space between cards */
     margin: 20px auto;
     padding: 20px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: black;
+    color: #ca2521;
+    border: 2px solid #ca2521;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
+    font-family: "Aclonica", sans-serif;
+}
+
+.input-field {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ca2521;
+    border-radius: 5px;
+    background-color: black;
+    color: #ca2521;
+}
+
+.input-field input::placeholder {
+    color: #ca2521;
+}
+
+.btn {
+    background-color: #ca2521;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: black;
+    color: #ca2521;
+    border: 1px solid #ca2521;
+}
+
+.flash-messages {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+    color: #ca2521;
+}
+
+.flash-messages li {
+    margin-bottom: 10px;
 }
